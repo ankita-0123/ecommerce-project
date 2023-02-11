@@ -1,0 +1,94 @@
+
+.cart-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 20rem;
+    overflow: auto;
+  }
+  
+  .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.7rem;
+    margin: 1rem 0;
+  }
+  
+  .actions {
+    text-align: right;
+  }
+  
+  .actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #0b08a9;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+  }
+  
+  .actions button:hover,
+  .actions button:active {
+    background-color: #030969;
+    border-color: #061e7f;
+    color: white;
+  }
+  
+  .actions .button--alt {
+    color: #06088a;
+  }
+  
+  .actions .button {
+    background-color: #121bbd;
+    color: white;
+  }
+ 
+  .deletebtn button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #1929be;
+    border: 1px solid #07228c;
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+  .cart-list{
+    display: block;
+    border-bottom: 2px solid #000000;
+    font-weight: bold;
+    padding: 0px;
+  }
+
+ .quantity{
+  text-align: right;
+ }
+  
+  .price{
+    color:#8a2b06;
+    margin-top: 0px;
+  }
+
+.cart-list button {
+  font: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: #2ecbf2;
+  border: 1px solid #5c95ae;
+  width: 8rem;
+  text-align: center;
+  border-radius: 6px;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin: 0 3px 0 3px;
+}
+
+.cart-list button:hover,
+.cart-list button:active {
+  background-color: #47bada;
+  color: white;
+}

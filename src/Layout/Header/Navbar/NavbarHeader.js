@@ -1,9 +1,10 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import CartButton from '../CartButton.js/CartButton';
 
 
-const NavbarHeader=()=> {
+const NavbarHeader=(props)=> {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -17,6 +18,7 @@ const NavbarHeader=()=> {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <CartButton onClick={props.onShowCart}/>
     </Navbar>
   );
 }

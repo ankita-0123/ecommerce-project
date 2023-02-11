@@ -39,7 +39,7 @@ const productsArr = [
 
 
 
-const Products = () => {
+const Products = (props) => {
     const productsList=productsArr.map((product2)=>(
         <ProductsShow
         key={product2.id}
