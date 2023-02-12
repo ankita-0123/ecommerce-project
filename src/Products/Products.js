@@ -4,6 +4,8 @@ import shirt2 from '../assets/shirt2.jpg'
 import shirt3 from '../assets/shirt3.jfif'
 import shirt4 from '../assets/shirt4.jfif'
 import classes from './Products.module.css'
+import { Fragment } from "react";
+// import Banner from "../Layout/BannerCategory/Banner";
 
 
 const productsArr = [
@@ -50,6 +52,11 @@ const Products = (props) => {
       />
     ));
 
-  return <ul>{productsList}</ul>
+  return (
+    <Fragment>
+      <div className={classes.text}><br/><br/><br/><h1> OUR BEST SELLING PRODUCTS </h1></div>
+      <ul>{productsList}</ul>
+    </Fragment>
+  );
 };
 export default Products;
