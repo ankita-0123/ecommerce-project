@@ -3,17 +3,19 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import CartButton from '../CartButton.js/CartButton';
 
-import { BrowserRouter as Router,Route,Link,Routes} from 'react-router-dom';
-import Home from '../../../Pages/Home/Home';
-import Products from '../../../Products/Products';
-import About from '../../../Pages/About';
-import ContactUs from '../../../Pages/ContactUs/ContactUs';
+import { Link} from 'react-router-dom';
+// import Home from '../../../Pages/Home/Home';
+// import Products from '../../../Products/Products';
+// import About from '../../../Pages/About';
+// import ContactUs from '../../../Pages/ContactUs/ContactUs';
+// import Product1 from '../../../Products/ProductDetails/Product1';
+import { Fragment } from 'react';
 
 
 
 const NavbarHeader=(props)=> {
   return (
-    <Router>
+    <Fragment>
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/"><h2>Sharpner</h2></Navbar.Brand>
@@ -30,15 +32,17 @@ const NavbarHeader=(props)=> {
       <CartButton onClick={props.onShowCart}/>
     </Navbar>
 
-    <div>
+    {/* <div>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/products" element={<Products/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/contactus" element={<ContactUs/>} />
+        <Route path="/page" element={<Product1/>} />
+        <Route path="'/products/productdetails'" element={<Product1/>} />
       </Routes>
-    </div>
-    </Router>
+    </div> */}
+    </Fragment>
   );
 }
 
