@@ -11,6 +11,7 @@ const Home=()=>{
         <br/><h1>SHOP FOR OUR NEW TRENDY STOCKS.... </h1><br/>
         </div><br/>
         <Banner/>
+        <Products/>
         <Category/>
         <Products/>
     </Fragment>
