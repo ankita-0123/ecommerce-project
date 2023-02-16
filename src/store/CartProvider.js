@@ -1,5 +1,5 @@
-import React,{useContext, useState,useEffect} from "react";
-import AuthContext from "./auth-context";
+import React,{ useState,useEffect} from "react";
+
 import CartContext from "./cart-context"
 import axios from "axios";
 
@@ -9,7 +9,6 @@ const CartProvider=(props)=>{
     const [items,updateItems]=useState([])
     const [userEmail, setUserEmail] = useState(initialUserEmail)
 
-    const AuthCtx=useContext(AuthContext);
     
     const userEmailHandler = (email) =>{
       const newUserEmail = email.replace('@', '').replace('.', '')
