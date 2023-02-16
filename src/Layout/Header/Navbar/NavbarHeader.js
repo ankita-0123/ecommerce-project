@@ -2,18 +2,26 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import CartButton from '../CartButton.js/CartButton';
-
+import { useHistory } from 'react-router-dom';
 import { Link} from 'react-router-dom';
-// import Home from '../../../Pages/Home/Home';
-// import Products from '../../../Products/Products';
-// import About from '../../../Pages/About';
-// import ContactUs from '../../../Pages/ContactUs/ContactUs';
-// import Product1 from '../../../Products/ProductDetails/Product1';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
+import AuthContext from '../../../store/auth-context';
+import classes from './NavbarHeader.module.css'
 
 
 
 const NavbarHeader=(props)=> {
+  const history=useHistory();
+
+const AuthCtx=useContext(AuthContext);
+const isLoggedIn=AuthCtx.isLoggedIn;
+
+    const logoutHandler=()=>{
+      AuthCtx.logout();
+      history.replace('/login')
+      console.log('history replace active')
+    }
+
   return (
     <Fragment>
     <Navbar bg="light" expand="lg">
@@ -23,25 +31,18 @@ const NavbarHeader=(props)=> {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="products">Store</Nav.Link>
-            <Nav.Link as={Link} to="about">About</Nav.Link>
-            <Nav.Link as={Link} to="contactus">Contact Us</Nav.Link>
+            <Nav.Link as={Link} to="/products">Store</Nav.Link>
+            <Nav.Link as={Link} to="/about">About</Nav.Link>
+            <Nav.Link as={Link} to="/contactus">Contact Us</Nav.Link>
+            <Nav.Link as={Link} to="/login">LogIn</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
+      {console.log(isLoggedIn)}
+      {isLoggedIn && (<button className={classes.button} onClick={logoutHandler}>LOGOUT</button>)}
       <CartButton onClick={props.onShowCart}/>
     </Navbar>
 
-    {/* <div>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/products" element={<Products/>} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/contactus" element={<ContactUs/>} />
-        <Route path="/page" element={<Product1/>} />
-        <Route path="'/products/productdetails'" element={<Product1/>} />
-      </Routes>
-    </div> */}
     </Fragment>
   );
 }

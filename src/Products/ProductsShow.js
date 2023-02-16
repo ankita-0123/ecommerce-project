@@ -1,6 +1,6 @@
 import './ProductsShow.module.css'
 import ProductsAddCartForm from './ProductsAddCartForm'
-import { Link,Route,Routes } from 'react-router-dom';
+import { Link,Route, Switch } from 'react-router-dom';
 import Product1 from './ProductDetails/Product1';
 import { Fragment } from 'react';
 
@@ -20,9 +20,9 @@ const ProductsShow =(props)=>{
             <ProductsAddCartForm id={props.id} item={props} />
           </div>
         </li>
-        <Routes>
+        <Switch>
           <Route path="'/products/productdetails'" element={<Product1 />} />
-        </Routes>
+        </Switch>
         </Fragment>
 
 }
