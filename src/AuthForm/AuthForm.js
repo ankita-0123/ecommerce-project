@@ -3,6 +3,7 @@ import AuthContext from "../store/auth-context";
 import { useHistory } from "react-router-dom";
 
 import classes from "./AuthForm.module.css";
+import CartContext from "../store/cart-context";
 
 const AuthForm = () => {
     const history=useHistory();
@@ -10,18 +11,24 @@ const AuthForm = () => {
   const passwordInputRef = useRef();
 
   const AuthCtx=useContext(AuthContext);
+  const CartCtx=useContext(CartContext)
 
   const [isLogin, setIsLogin] = useState(true);
    const [isLoading,setIsLoading] = useState(false)
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
+
+
   const submitHandler = (event) => {
     event.preventDefault();
 
     const enteredEmail = emailItnputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    CartCtx.userIndentifier(enteredEmail)
 setIsLoading(true)
+
+
 let url;
     if (isLogin) {
        url= "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCdVdERwY8R0pWYqhtuP3-j712UDKCGo78"

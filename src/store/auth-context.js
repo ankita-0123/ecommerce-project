@@ -12,17 +12,13 @@ export const AuthContextProvider=(props)=>{
 
 
 const initialToken=localStorage.getItem('token');
-
-
-// setTimeout(()=>{
-//   localStorage.clear();
-// },5000*60)
-// console.log('settime out active')
-
-
 const [token,setToken]=useState(initialToken);
 
+
 const userIsLoggedIn =!!token;
+
+
+
 
 const loginHandler=(token)=>{
   setToken(token)
@@ -41,6 +37,7 @@ const contextValue={
   isLoggedIn:userIsLoggedIn,
   login:loginHandler,
   logout:logoutHandler,
+  
 }
 
 

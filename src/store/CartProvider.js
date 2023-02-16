@@ -1,9 +1,20 @@
-import React,{useState} from "react";
+import React,{useContext, useState,useEffect} from "react";
+import AuthContext from "./auth-context";
 import CartContext from "./cart-context"
+import axios from "axios";
 
 const CartProvider=(props)=>{
     const [items,updateItems]=useState([])
+    const [userEmail, setUserEmail] = useState('')
 
+    const AuthCtx=useContext(AuthContext);
+    
+    const userEmailHandler = (email) =>{
+      const newUserEmail = email.replace('@', '').replace('.', '')
+      setUserEmail(newUserEmail)
+    }
+    
+    console.log(userEmail)
     
 
     const addItemHandler=(item)=>{
@@ -20,7 +31,11 @@ const CartProvider=(props)=>{
             updateItems(itemsCopy)
         }
         console.log(item)
-    }
+
+      axios.post(`https://crudcrud.com/api/acafed71801c43e5bd667f3bbb7787b7/${userEmail}`,item)
+    };
+
+
 
     const removeItemHandler = (id) => {};
 
@@ -51,13 +66,24 @@ const CartProvider=(props)=>{
     })
     console.log(totalPrice)
 
+
+    useEffect(()=>{
+      axios
+      .get(
+        `https://crudcrud.com/api/acafed71801c43e5bd667f3bbb7787b7/${userEmail}`
+      ).then((res)=>{
+          updateItems(res.data)
+      })
+    },[])
+
     const CartContexts={
         items:items,
         totalAmount:totalPrice,
         addItem: addItemHandler,
         removeItem:removeItemHandler,
         quantityplus: incrementHandler,
-        quantityminus: decrementHandler
+        quantityminus: decrementHandler,
+        userIndentifier: userEmailHandler,
     }
 
     return <CartContext.Provider value={CartContexts}>
