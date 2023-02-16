@@ -4,14 +4,17 @@ import CartContext from "./cart-context"
 import axios from "axios";
 
 const CartProvider=(props)=>{
+
+  const initialUserEmail=localStorage.getItem('userEmail');
     const [items,updateItems]=useState([])
-    const [userEmail, setUserEmail] = useState('')
+    const [userEmail, setUserEmail] = useState(initialUserEmail)
 
     const AuthCtx=useContext(AuthContext);
     
     const userEmailHandler = (email) =>{
       const newUserEmail = email.replace('@', '').replace('.', '')
       setUserEmail(newUserEmail)
+      localStorage.setItem('userEmail',newUserEmail);
     }
     
     console.log(userEmail)
@@ -32,7 +35,7 @@ const CartProvider=(props)=>{
         }
         console.log(item)
 
-      axios.post(`https://crudcrud.com/api/acafed71801c43e5bd667f3bbb7787b7/${userEmail}`,item)
+      axios.post(`https://crudcrud.com/api/2cdd777914b44fde8449b6f3d47eac38/${userEmail}`,item)
     };
 
 
@@ -59,7 +62,6 @@ const CartProvider=(props)=>{
         }
       };
 
-      
     let totalPrice=0;
     items.forEach((item)=>{
         totalPrice=totalPrice+Number(item.price*item.quantity)
@@ -70,11 +72,12 @@ const CartProvider=(props)=>{
     useEffect(()=>{
       axios
       .get(
-        `https://crudcrud.com/api/acafed71801c43e5bd667f3bbb7787b7/${userEmail}`
+        `https://crudcrud.com/api/2cdd777914b44fde8449b6f3d47eac38/${userEmail}`
       ).then((res)=>{
           updateItems(res.data)
+          console.log(res.data)
       })
-    },[])
+    },[userEmail])
 
     const CartContexts={
         items:items,
