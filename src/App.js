@@ -11,7 +11,7 @@ import ContactUs from './Pages/ContactUs/ContactUs';
 import Product1 from './Products/ProductDetails/Product1';
 import AuthForm from './AuthForm/AuthForm';
 import AuthContext from './store/auth-context';
-import axios from 'axios';
+
 
 
 
